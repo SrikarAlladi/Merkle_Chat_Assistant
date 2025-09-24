@@ -1,6 +1,12 @@
 // Grok API Service with TypeScript interfaces and comprehensive error handling
 import { repoAnalyzer, CodebaseContext } from '../utils/repoAnalyzer';
 
+import dotenv from "dotenv";
+dotenv.config();
+
+const apiKey = process.env.GROQ_API_KEY as string;
+
+
 export interface GrokMessage {
   role: 'system' | 'user' | 'assistant';
   content: string;
@@ -534,7 +540,7 @@ What specific aspect would you like to learn more about?`;
       return mockResponse;
     }
 
-    if (!this.config.apiKey || this.config.apiKey === 'REMOVED') {
+    if (!this.config.apiKey || this.config.apiKey === apiKey) {
       throw new Error('Grok API key not configured. Please set REACT_APP_GROK_API_KEY in your environment variables.');
     }
 
@@ -653,14 +659,14 @@ What specific aspect would you like to learn more about?`;
 // Create and export service instance
 const createGrokService = (): GrokService => {
   const config: GrokServiceConfig = {
-    apiKey: process.env.REACT_APP_GROK_API_KEY || 'REMOVED',
+    apiKey: process.env.REACT_APP_GROK_API_KEY || apiKey,
     apiUrl: process.env.REACT_APP_GROK_API_URL || 'https://api.x.ai/v1',
     model: process.env.REACT_APP_GROK_MODEL || 'grok-beta',
     timeout: parseInt(process.env.REACT_APP_API_TIMEOUT || '30000'),
     maxRetries: parseInt(process.env.REACT_APP_MAX_RETRIES || '3'),
     useMockResponses: process.env.REACT_APP_USE_MOCK_RESPONSES === 'true' || 
                      !process.env.REACT_APP_GROK_API_KEY ||
-                     process.env.REACT_APP_GROK_API_KEY === 'REMOVED'
+                     process.env.REACT_APP_GROK_API_KEY === apiKey
   };
 
   return new GrokService(config);
