@@ -54,12 +54,15 @@ Project Structure
 │   ├── index.html           Main HTML file
 │   ├── index.tsx            React entry point
 │   ├── App.tsx              Root component
-│   └── index.css            Tailwind CSS imports
+│   |── index.css            Tailwind CSS imports
+|   |__ app.css              For Mobile screen CSS 
+|
 ├── package.json             Project dependencies and scripts
 ├── tsconfig.json            TypeScript config
 ├── tailwind.config.js       Tailwind setup
 ├── postcss.config.js        PostCSS setup
-└── README.md                This file
+|── README.md                This file
+|__ .env                     Groq API Key
 
 Tools & Technologies
 
@@ -102,3 +105,4 @@ module.exports = {
 TypeScript
 
 The TypeScript settings are in tsconfig.json. It’s configured to use strict mode and support React’s JSX.
+
