@@ -1,7 +1,6 @@
 import React, { useState, useRef, useCallback, useEffect } from 'react';
 import data from '@emoji-mart/data';
-import Picker from '@emoji-mart/react';
-import { useBreakpoint } from '../hooks/useMediaQuery';
+import Picker from '@emoji-mart/react'; 
 import { useAppDispatch, useAppSelector, addUserMessage, enqueueMessage, processMessageQueue } from '../store';
 
 interface ThreeSectionInputProps {}
@@ -10,8 +9,7 @@ const ThreeSectionInput: React.FC<ThreeSectionInputProps> = () => {
   const dispatch = useAppDispatch();
   const isLoading = useAppSelector((state) => state.chat.isLoading);
   const isProcessingQueue = useAppSelector((state) => state.chat.isProcessingQueue);
-  const connectionStatus = useAppSelector((state) => state.chat.connectionStatus);
-  const { isMobile } = useBreakpoint();
+  const connectionStatus = useAppSelector((state) => state.chat.connectionStatus); 
 
   const [message, setMessage] = useState('');
   const [showEmojiPicker, setShowEmojiPicker] = useState(false);

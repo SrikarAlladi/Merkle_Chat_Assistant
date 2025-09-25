@@ -63,11 +63,11 @@ const AppContent: React.FC = () => {
   }, [messages, sessionId]);
 
   return (
-    <div className="root-container">
-      {!isMobile && <div className='left-container hidden md:flex'>
+    <div className="root-container grid md:grid-cols-[2fr_6fr] gap-[1rem] h-[100vh] p-[10px] box-border bg-gradient-to-r from-[#1D4ED8] to-[#7c3aed]">
+      {!isMobile && <div className='hidden md:flex flex-col gap-[10px]'>
         <ResponsiveSidebar />
       </div>}
-      <div className="right-container">
+      <div className="flex flex-col h-full gap-[10px] w-full overflow-x-hidden">
         <ChatHeader />
         <ChatArea />
         <ThreeSectionInput />

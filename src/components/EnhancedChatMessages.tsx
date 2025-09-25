@@ -10,8 +10,7 @@ const EnhancedChatMessages: React.FC = () => {
 
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const messagesContainerRef = useRef<HTMLDivElement>(null);
-  const [isUserScrolling, setIsUserScrolling] = useState(false);
-  const [showScrollToBottom, setShowScrollToBottom] = useState(false);
+  const [isUserScrolling, setIsUserScrolling] = useState(false); 
   const scrollTimeoutRef = useRef<NodeJS.Timeout>();
 
   // Enhanced auto-scroll logic
@@ -38,8 +37,7 @@ const EnhancedChatMessages: React.FC = () => {
   const handleScroll = useCallback(() => {
     if (!messagesContainerRef.current) return;
 
-    const nearBottom = isNearBottom();
-    setShowScrollToBottom(!nearBottom);
+    const nearBottom = isNearBottom(); 
 
     // Clear existing timeout
     if (scrollTimeoutRef.current) {
@@ -82,14 +80,9 @@ const EnhancedChatMessages: React.FC = () => {
       }
     };
   }, []);
-
-  const handleScrollToBottomClick = () => {
-    setIsUserScrolling(false);
-    scrollToBottom(true);
-  };
-
+ 
   return (
-    <div className="relative active-chat-area p-4" ref={messagesContainerRef}
+    <div className="relative bg-[#FFFFFF] px-[10px] rounded-[10px] flex flex-col overflow-y-scroll flex-grow" ref={messagesContainerRef}
       onScroll={handleScroll}>
       {messages.map((message, index) => (
         <div key={message.id} className="px-6">

@@ -44,7 +44,7 @@ const ResponsiveSidebar: React.FC<ResponsiveSidebarProps> = ({ children }) => {
       <div className="flex-col hidden md:flex">
         <MerkleLogo className="text-white" width={40} height={40} />
       </div>
-      <div className="bg-white border-2 sidebar-content border-[#1D4ED8] rounded-2xl overflow-hidden hidden md:flex flex-col">
+      <div className="bg-white border-2 sidebar-content border-[#1D4ED8] rounded-2xl overflow-hidden hidden md:flex flex-col flex-grow">
         <DesktopSidebarContent />
       </div>
     </>

@@ -6,7 +6,7 @@ const ChatHeader: React.FC = () => {
   const { toggleMenu } = useMobileMenu();
 
   return (
-      <div className="flex items-center w-full py-[10px] chat-header">
+      <div className="flex items-center w-full py-[10px] justify-between">
         {/* Desktop: left-aligned small title */}
         <h6 className="hidden md:block text-white text-sm">
           Tracker Chat
