@@ -54,58 +54,7 @@ const ThreeSectionInput: React.FC<ThreeSectionInputProps> = () => {
     // Convert HTML to plain text for now (can be enhanced to support markdown)
     setMessage(textContent);
   }, []);
-
-  // Convert HTML to markdown for storage
-  const htmlToMarkdown = (html: string): string => {
-    let markdown = html;
-    
-    // Convert HTML tags to markdown
-    markdown = markdown.replace(/<strong[^>]*>(.*?)<\/strong>/gi, '**$1**');
-    markdown = markdown.replace(/<b[^>]*>(.*?)<\/b>/gi, '**$1**');
-    markdown = markdown.replace(/<em[^>]*>(.*?)<\/em>/gi, '*$1*');
-    markdown = markdown.replace(/<i[^>]*>(.*?)<\/i>/gi, '*$1*');
-    markdown = markdown.replace(/<u[^>]*>(.*?)<\/u>/gi, '__$1__');
-    
-    // Handle headings
-    markdown = markdown.replace(/<h1[^>]*>(.*?)<\/h1>/gi, '# $1');
-    markdown = markdown.replace(/<h2[^>]*>(.*?)<\/h2>/gi, '## $1');
-    markdown = markdown.replace(/<h3[^>]*>(.*?)<\/h3>/gi, '### $1');
-    
-    // Handle lists
-    markdown = markdown.replace(/<ul[^>]*>(.*?)<\/ul>/gis, (match, content) => {
-      return content.replace(/<li[^>]*>(.*?)<\/li>/gi, '- $1\n');
-    });
-    
-    markdown = markdown.replace(/<ol[^>]*>(.*?)<\/ol>/gis, (match, content) => {
-      let counter = 1;
-      return content.replace(/<li[^>]*>(.*?)<\/li>/gi, () => `${counter++}. $1\n`);
-    });
-    
-    // Handle blockquotes
-    markdown = markdown.replace(/<blockquote[^>]*>(.*?)<\/blockquote>/gi, '> $1');
-    
-    // Clean up HTML tags and entities
-    markdown = markdown.replace(/<br\s*\/?>/gi, '\n');
-    markdown = markdown.replace(/<div[^>]*>/gi, '\n');
-    markdown = markdown.replace(/<\/div>/gi, '');
-    markdown = markdown.replace(/<p[^>]*>/gi, '');
-    markdown = markdown.replace(/<\/p>/gi, '\n');
-    markdown = markdown.replace(/&nbsp;/g, ' ');
-    markdown = markdown.replace(/&amp;/g, '&');
-    markdown = markdown.replace(/&lt;/g, '<');
-    markdown = markdown.replace(/&gt;/g, '>');
-    markdown = markdown.replace(/&quot;/g, '"');
-    
-    // Remove any remaining HTML tags
-    markdown = markdown.replace(/<[^>]*>/g, '');
-    
-    // Clean up extra whitespace
-    markdown = markdown.replace(/\n\s*\n/g, '\n\n');
-    markdown = markdown.trim();
-    
-    return markdown;
-  };
-
+ 
   const handleSend = useCallback(() => {
     if (message.trim() && !isLoading && connectionStatus !== 'disconnected') {
       const messageText = message.trim();
