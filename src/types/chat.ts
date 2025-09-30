@@ -5,6 +5,3 @@ export interface IMessage {
   timestamp: string; // ISO string for Redux serialization
   isLoading?: boolean;
 }
-
-
-export type MessageSender = 'user' | 'assistant';

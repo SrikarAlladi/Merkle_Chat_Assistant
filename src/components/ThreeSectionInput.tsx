@@ -85,7 +85,7 @@ const ThreeSectionInput: React.FC<ThreeSectionInputProps> = () => {
     if (ctrlKey) {
       switch (e.key.toLowerCase()) {
         case 'b':
-          e.preventDefault();
+          e.preventDefault(); // Stops Browsers Default Action
           executeCommand('bold');
           break;
         case 'i':
@@ -112,6 +112,9 @@ const ThreeSectionInput: React.FC<ThreeSectionInputProps> = () => {
       }
     }
   }, [executeCommand, handleSend, isComposing]);
+
+  // useCallback memoizes the function.
+  // React will return the same function reference across renders until one of the dependencies changes (executeCommand, handleSend, isComposing).
 
   // Handle emoji selection
   const handleEmojiSelect = useCallback((emoji: any) => {
