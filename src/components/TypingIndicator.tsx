@@ -44,7 +44,7 @@ const TypingIndicator: React.FC = () => {
             </span>
             
             {/* Pulse indicator */}
-            <div className="w-2 h-2 bg-blue-500 rounded-full animate-pulse"></div>
+            {/* <div className="w-2 h-2 bg-blue-500 rounded-full animate-pulse"></div> */}
           </div>
         </div>
       </div>

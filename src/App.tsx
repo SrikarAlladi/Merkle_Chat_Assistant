@@ -32,7 +32,7 @@ const AppContent: React.FC = () => {
   const sessionId = useAppSelector((state) => state.chat.sessionId);
   const { isMobile } = useBreakpoint();
   const { openMenu } = useMobileMenu();
-  console.log(isMobile)
+  console.log(isMobile , openMenu)
 
   // Swipe gesture for opening sidebar on mobile only
   const { touchHandlers } = useSidebarSwipe(
