@@ -302,7 +302,7 @@ const SimpleMarkdownMessage: React.FC<SimpleMarkdownMessageProps> = ({ message }
   );
 
   return (
-    <div className={`markdown-message text-xs sm:text-base flex items-start gap-3 ${isUser ? 'justify-end' : 'justify-start'}`}>
+    <div className={`text-xs sm:text-base flex items-start gap-3 ${isUser ? 'justify-end' : 'justify-start'}`}>
       {!isUser && avatar}
       <div className={`flex flex-col max-w-3xl p-4 rounded-xl shadow-md ${messageClasses}`}>
         {!message.isLoading && (
@@ -310,7 +310,7 @@ const SimpleMarkdownMessage: React.FC<SimpleMarkdownMessageProps> = ({ message }
             {isUser ? (
               <div className="text-blue-400 whitespace-pre-wrap flex flex-col">
                 <span>{message.text}</span>
-                </div>
+              </div>
             ) : (
               <div className="prose prose-sm max-w-none">
                 {parseSimpleMarkdown(message.text)}
