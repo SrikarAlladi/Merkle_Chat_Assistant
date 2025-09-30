@@ -82,7 +82,7 @@ const EnhancedChatMessages: React.FC = () => {
   }, []);
  
   return (
-    <div className="relative bg-[#FFFFFF] px-[10px] rounded-[10px] flex flex-col overflow-y-scroll flex-grow" ref={messagesContainerRef}
+    <div className="relative bg-[#FFFFFF] px-[10px] py-[10px] rounded-[10px] flex flex-col overflow-y-scroll flex-grow" ref={messagesContainerRef}
       onScroll={handleScroll}>
       {messages.map((message, index) => (
         <div key={message.id} className="px-6">
